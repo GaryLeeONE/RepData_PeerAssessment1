@@ -56,7 +56,7 @@ For this part of the assignment, the missing values in the dataset are ignored.
 stepsEachDay <- data %>%
     group_by(date) %>%
     summarize(sum = sum(steps, na.rm = TRUE))
-hist(stepsEachDay$sum,
+hist(stepsEachDay$sum, breaks = 16,
      xlab = "Total number of steps taken each day",
      main = "Histogram of total number of steps taken each day")
 ```
@@ -145,10 +145,10 @@ stepsEachDay_narm <- data_narm %>%
     group_by(date) %>%
     summarize(sum = sum(steps))
 par(mfrow = c(1,2))
-hist(stepsEachDay$sum,
+hist(stepsEachDay$sum, breaks = 16,
      xlab = "Total number of steps/day",
      main = "NA not removed")
-hist(stepsEachDay_narm$sum,
+hist(stepsEachDay_narm$sum, breaks = 16,
      xlab = "Total number of steps/day (NA removed)",
      main = "NA removed")
 ```
@@ -169,7 +169,7 @@ median_narm <- median(stepsEachDay_narm$sum)
 + The median total number of steps taken per day **before** removing `NA` values: 10395.  
 + The median total number of steps taken per day **after** removing `NA` values: 1.07662\times 10^{4}.  
 
-We can see that the values differ after removing `NA` values. Both the mean and the median increased, possibly because the values substituted for `NA`s are from time intervals with relatively large number of mean steps.
+We can see that the values differ after removing `NA` values. The frequency for very low number of steps each day decreased dramatically after filling in the `NA`s.
 
 ### Are there differences in activity patterns between weekdays and weekends?
 
